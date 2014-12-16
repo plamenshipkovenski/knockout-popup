@@ -1,0 +1,21 @@
+<div class="comment-tab">
+    <ul class="list-inline" data-bind="foreach: sections">
+        <li data-bind="css: { active: isSelected }">
+            <a href="#" data-bind="click: $parent.selectedSection">
+                <span class="hover" data-bind="text: name, css: { black: isSelected }" />
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" data-bind="foreach: sections">
+        <div class="tab-pane" data-bind="css: { active: isSelected }">
+
+            <!-- ko if: name == "COMMENT" -->
+            <input class="input-reply" type="text" data-bind="
+                                            attr: { placeholder: placeHolder },
+                                            event:{'keyup': $parents[1].addReply},
+                                            value: $parents[1].replyText,
+                                            valueUpdate: 'afterkeydown'"/>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

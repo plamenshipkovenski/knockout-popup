@@ -1,0 +1,33 @@
+<div class="comments-list">
+    <input class="input-comment" type="text" placeholder="comment ..." data-bind="event:{'keyup': addComment},
+                                    value: commentText,
+                                    valueUpdate: 'afterkeydown'"/>
+    <section class="comments">
+        <ul class="list-unstyled" data-bind="foreach: comments">
+            <li class="comment">
+                <img data-bind="attr: { src: authorImage, alt: 'author\'s Photo' }" class="img-responsive img-thumbnail hidden-xs" style="width: 10rem; height: 10rem" />
+                <img data-bind="attr: { src: authorImage, alt: 'author\'s Photo' }" class="img-responsive img-thumbnail visible-xs" style="width: 5rem; height: 5rem" />
+                <header>
+                    <h3 data-bind="text: authorName" class="popup-default-blue serif margin-top-0"></h3>
+                    <p data-bind="text: createdAt"></p>
+                </header>
+                <p class="indent" data-bind="text: text"></p>
+                <comment-bar-social></comment-bar-social>
+                <!-- ko if: replies().length -->
+                <ul class="list-unstyled" data-bind="foreach: replies">
+                    <li class="reply">
+                        <img data-bind="attr: { src: authorImage, alt: 'author\'s Photo' }" class="img-responsive img-thumbnail hidden-xs" style="width: 5rem; height: 5rem" />
+                        <header>
+                            <h4 class="serif popup-dark-blue" data-bind="text: authorName"></h4>
+                            <p class="reply-date" data-bind="text: createdAt"></p>
+                        </header>
+                        <p class="indent" data-bind="text: text"></p>
+                        <reply-bar-social></reply-bar-social>
+                    </li>
+                </ul>
+                <!-- /ko -->
+                <comment-tab></comment-tab>
+            </li>
+        </ul>
+    </section>
+</div>
